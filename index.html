@@ -1,87 +1,174 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juegos de Ale 🚀</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; }
-    .menu-header { text-align:center; padding:32px 24px 48px; }
-    .menu-header h1 {
-      font-size:clamp(2.5rem,7vw,4.5rem); font-weight:900;
-      background:linear-gradient(135deg,var(--teal),var(--yellow),var(--red));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-      margin-bottom:10px;
-    }
-    .menu-header p { color:var(--text2); font-size:1.2rem; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juegos de Luis Ale 🚀</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .menu-header {
+        text-align: center;
+        padding: 32px 24px 48px;
+      }
+      .menu-header h1 {
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-weight: 900;
+        background: linear-gradient(
+          135deg,
+          var(--teal),
+          var(--yellow),
+          var(--red)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+      }
+      .menu-header p {
+        color: var(--text2);
+        font-size: 1.2rem;
+      }
 
-    .menu-cards {
-      display:flex; gap:32px; flex-wrap:wrap; justify-content:center;
-      padding:0 24px 60px;
-    }
-    .menu-card {
-      background:var(--card); border-radius:32px; padding:48px 40px;
-      text-align:center; width:320px;
-      box-shadow:0 12px 48px rgba(0,0,0,0.5);
-      text-decoration:none; color:var(--text);
-      transition:transform .2s, box-shadow .2s;
-      display:flex; flex-direction:column; align-items:center; gap:20px;
-      animation:fadeIn .4s ease both;
-    }
-    .menu-card:hover { transform:translateY(-12px) scale(1.03); box-shadow:0 24px 64px rgba(0,0,0,0.6); }
-    .menu-card:active { transform:scale(0.97); }
+      .menu-cards {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 24px 60px;
+      }
+      .menu-card {
+        background: var(--card);
+        border-radius: 32px;
+        padding: 48px 40px;
+        text-align: center;
+        width: 320px;
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        color: var(--text);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        animation: fadeIn 0.4s ease both;
+      }
+      .menu-card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+      }
+      .menu-card:active {
+        transform: scale(0.97);
+      }
 
-    .menu-card.code  { border-top:6px solid var(--teal); animation-delay:.05s; }
-    .menu-card.math  { border-top:6px solid var(--orange); animation-delay:.15s; }
+      .menu-card.code {
+        border-top: 6px solid var(--teal);
+        animation-delay: 0.05s;
+      }
+      .menu-card.math {
+        border-top: 6px solid var(--orange);
+        animation-delay: 0.15s;
+      }
 
-    .menu-icon { font-size:6rem; line-height:1; }
-    .menu-title { font-size:2rem; font-weight:900; }
-    .menu-sub   { font-size:1rem; color:var(--text2); line-height:1.5; }
-    .menu-count {
-      font-size:.9rem; font-weight:800; padding:6px 18px; border-radius:20px;
-      background:var(--card2);
-    }
-    .menu-card.code .menu-count { color:var(--teal); }
-    .menu-card.math .menu-count { color:var(--orange); }
+      .menu-icon {
+        font-size: 6rem;
+        line-height: 1;
+      }
+      .menu-title {
+        font-size: 2rem;
+        font-weight: 900;
+      }
+      .menu-sub {
+        font-size: 1rem;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+      .menu-count {
+        font-size: 0.9rem;
+        font-weight: 800;
+        padding: 6px 18px;
+        border-radius: 20px;
+        background: var(--card2);
+      }
+      .menu-card.code .menu-count {
+        color: var(--teal);
+      }
+      .menu-card.math .menu-count {
+        color: var(--orange);
+      }
 
-    .menu-btn {
-      padding:16px 40px; border-radius:var(--radius); font-size:1.2rem; font-weight:900;
-      border:none; cursor:pointer; font-family:var(--font); width:100%;
-      transition:transform .1s, filter .1s;
-    }
-    .menu-btn:hover  { transform:scale(1.05); filter:brightness(1.1); }
-    .menu-btn:active { transform:scale(.96); }
-    .menu-card.code .menu-btn { background:var(--teal);   color:#1a1a2e; }
-    .menu-card.math .menu-btn { background:var(--orange); color:#1a1a2e; }
+      .menu-btn {
+        padding: 16px 40px;
+        border-radius: var(--radius);
+        font-size: 1.2rem;
+        font-weight: 900;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        width: 100%;
+        transition:
+          transform 0.1s,
+          filter 0.1s;
+      }
+      .menu-btn:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+      }
+      .menu-btn:active {
+        transform: scale(0.96);
+      }
+      .menu-card.code .menu-btn {
+        background: var(--teal);
+        color: #1a1a2e;
+      }
+      .menu-card.math .menu-btn {
+        background: var(--orange);
+        color: #1a1a2e;
+      }
 
-    .rocket { display:inline-block; animation:bounce 1.5s ease infinite; }
-  </style>
-</head>
-<body>
-  <canvas id="confetti-canvas"></canvas>
+      .rocket {
+        display: inline-block;
+        animation: bounce 1.5s ease infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="confetti-canvas"></canvas>
 
-  <div class="menu-header">
-    <h1><span class="rocket">🚀</span> Juegos de Ale</h1>
-    <p>¿Qué quieres aprender hoy?</p>
-  </div>
+    <div class="menu-header">
+      <h1><span class="rocket">🚀</span> Juegos de Ale</h1>
+      <p>¿Qué quieres aprender hoy?</p>
+    </div>
 
-  <div class="menu-cards">
-    <a href="programacion.html" class="menu-card code">
-      <div class="menu-icon">💻</div>
-      <div class="menu-title">Programación</div>
-      <div class="menu-sub">Aprende a pensar como un programador con eventos, bucles, funciones y más.</div>
-      <div class="menu-count">9 juegos</div>
-      <div class="menu-btn">¡A programar!</div>
-    </a>
+    <div class="menu-cards">
+      <a href="programacion.html" class="menu-card code">
+        <div class="menu-icon">💻</div>
+        <div class="menu-title">Programación</div>
+        <div class="menu-sub">
+          Aprende a pensar como un programador con eventos, bucles, funciones y
+          más.
+        </div>
+        <div class="menu-count">9 juegos</div>
+        <div class="menu-btn">¡A programar!</div>
+      </a>
 
-    <a href="matematicas.html" class="menu-card math">
-      <div class="menu-icon">🔢</div>
-      <div class="menu-title">Matemáticas</div>
-      <div class="menu-sub">Practica sumas, tablas, fracciones, figuras, el reloj y mucho más.</div>
-      <div class="menu-count">9 juegos</div>
-      <div class="menu-btn">¡A las mates!</div>
-    </a>
-  </div>
-</body>
+      <a href="matematicas.html" class="menu-card math">
+        <div class="menu-icon">🔢</div>
+        <div class="menu-title">Matemáticas</div>
+        <div class="menu-sub">
+          Practica sumas, tablas, fracciones, figuras, el reloj y mucho más.
+        </div>
+        <div class="menu-count">9 juegos</div>
+        <div class="menu-btn">¡A las mates!</div>
+      </a>
+    </div>
+  </body>
 </html>
