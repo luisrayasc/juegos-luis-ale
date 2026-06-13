@@ -12,15 +12,16 @@ const LEVELS = [
 
 let level = 0;
 let earned = getStars(GAME_ID);
-let score = 0;
+let score = 0;       // mensajes descifrados (solo para mostrar puntos)
 let roundNum = 0;
 let original = '';   // texto real
 let shift = 0;       // desplazamiento secreto usado para cifrar
 let cipher = '';     // texto cifrado mostrado
 let guess = 0;       // desplazamiento que el jugador prueba para descifrar
+let mistakes = 0;    // veces que pulsó "¡Listo!" sin haberlo descifrado aún
 let answered = false;
 
-function build() { score = 0; roundNum = 0; nextRound(); }
+function build() { score = 0; roundNum = 0; mistakes = 0; nextRound(); }
 
 function shiftChar(ch, s) {
   const code = ch.charCodeAt(0);
@@ -114,15 +115,16 @@ async function check() {
   const decoded = decodedNow();
   const correct = decoded === original;
   if (!correct) {
+    mistakes++;
     playError();
     showToast('Aún no se lee bien... ¡sigue girando!', 1400);
     speak('Aún no se lee bien. Sigue girando la rueda.');
     return;
   }
   answered = true;
+  score++;
   const el = document.getElementById('decoded');
   el.classList.add('solved');
-  score++;
   playTone(660, 'sine', 0.25, 0.4);
   speak(`¡Lo descifraste! Dice ${original}.`);
   document.getElementById('reason-slot').innerHTML =
@@ -136,13 +138,14 @@ async function check() {
 
 async function finishLevel() {
   const cfg = LEVELS[level];
-  const pct = score / cfg.rounds;
-  const stars = pct >= 0.85 ? 3 : pct >= 0.6 ? 2 : 1;
+  // Siempre se descifran todos para avanzar; las estrellas premian hacerlo
+  // con pocos intentos fallidos al pulsar "¡Listo!".
+  const stars = mistakes === 0 ? 3 : mistakes <= cfg.rounds ? 2 : 1;
   if (stars > earned) { earned = stars; saveStars(GAME_ID, stars); }
   updateStarDisplay();
   playSuccess();
   showConfetti();
-  const msg = score === cfg.rounds ? `🏆 ¡Perfecto! ${score}/${cfg.rounds}` : `🌟 ${score} de ${cfg.rounds} descifrados`;
+  const msg = mistakes === 0 ? `🏆 ¡Perfecto! ${cfg.rounds}/${cfg.rounds} sin errores` : `🌟 ${cfg.rounds} descifrados`;
   showToast(msg, 2500);
   speak(msg);
   await delay(2600);
