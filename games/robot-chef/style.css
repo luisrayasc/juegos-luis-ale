@@ -111,6 +111,13 @@
 .ingredient:hover { transform: scale(1.05); border-color: var(--teal); }
 .ingredient.dragging { opacity: 0.4; }
 .ingredient.used { opacity: 0.35; pointer-events: none; }
+.ingredient.selected {
+  border-color: var(--yellow);
+  transform: scale(1.08);
+  box-shadow: 0 0 0 3px var(--yellow);
+}
+
+.slot { cursor: pointer; }
 
 .robot-area {
   display: flex;
@@ -142,4 +149,15 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
+}
+
+/* En pantallas chicas (móvil) apilamos el área para tocar cómodamente */
+@media (max-width: 640px) {
+  .arena {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .robot-area { order: -1; }
+  .ingredient { padding: 12px 18px; font-size: 1.05rem; }
+  .slot { min-height: 60px; }
 }

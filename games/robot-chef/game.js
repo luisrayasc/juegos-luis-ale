@@ -25,11 +25,13 @@ let level = 0;
 let earned = getStars(GAME_ID);
 let sequence = [];
 let dragItem = null;
+let selected = null;
 
 function build() {
   const recipe = RECIPES[level % RECIPES.length];
   const shuffled = shuffle([...recipe.steps]);
   sequence = [];
+  selected = null;
 
   const app = document.getElementById('app');
   app.innerHTML = `
@@ -46,7 +48,7 @@ function build() {
         </div>
         <div class="instruction-box">
           <button class="speak-btn" id="speak-btn">🔊</button>
-          <span id="instruction-text">Arrastra los ingredientes al área de la receta en el orden correcto.</span>
+          <span id="instruction-text">Toca un ingrediente y luego el paso donde va, en el orden correcto. En computadora también puedes arrastrarlo.</span>
         </div>
       </div>
 
@@ -94,15 +96,58 @@ function build() {
   document.getElementById('btn-next')?.addEventListener('click', () => { level++; build(); });
 }
 
+function clearSelection() {
+  if (selected) selected.classList.remove('selected');
+  selected = null;
+}
+
+function placeInSlot(sourceEl, slot) {
+  if (!sourceEl || slot.querySelector('.ingredient')) return;
+  const idx = parseInt(slot.dataset.index);
+  playClick();
+
+  const clone = sourceEl.cloneNode(true);
+  clone.classList.remove('dragging', 'selected');
+  clone.removeAttribute('id');
+  clone.draggable = false;
+  clone.style.cursor = 'pointer';
+  slot.innerHTML = '';
+  slot.appendChild(clone);
+
+  sourceEl.classList.add('used');
+  slot._source = sourceEl;
+  sequence[idx] = sourceEl.dataset.step;
+}
+
+function removeFromSlot(slot) {
+  if (!slot.querySelector('.ingredient')) return;
+  const idx = parseInt(slot.dataset.index);
+  playClick();
+  if (slot._source) { slot._source.classList.remove('used'); slot._source = null; }
+  slot.innerHTML = `<span>Paso ${idx + 1}</span>`;
+  sequence[idx] = undefined;
+}
+
 function setupDragDrop(recipe) {
   document.querySelectorAll('.ingredient').forEach(el => {
-    el.addEventListener('dragstart', e => {
+    // Arrastre (escritorio)
+    el.addEventListener('dragstart', () => {
       dragItem = el;
+      clearSelection();
       setTimeout(() => el.classList.add('dragging'), 0);
     });
     el.addEventListener('dragend', () => {
       el.classList.remove('dragging');
       dragItem = null;
+    });
+    // Toque / clic (móvil y escritorio): seleccionar el ingrediente
+    el.addEventListener('click', () => {
+      if (el.classList.contains('used')) return;
+      if (selected === el) { clearSelection(); return; }
+      clearSelection();
+      selected = el;
+      el.classList.add('selected');
+      playClick();
     });
   });
 
@@ -115,20 +160,18 @@ function setupDragDrop(recipe) {
     slot.addEventListener('drop', e => {
       e.preventDefault();
       slot.classList.remove('drag-over');
-      if (!dragItem) return;
-      const idx = parseInt(slot.dataset.index);
-      if (slot.querySelector('.ingredient')) return;
-      playClick();
-
-      const clone = dragItem.cloneNode(true);
-      clone.classList.remove('dragging');
-      clone.draggable = false;
-      clone.style.cursor = 'default';
-      slot.innerHTML = '';
-      slot.appendChild(clone);
-
-      dragItem.classList.add('used');
-      sequence[idx] = dragItem.dataset.step;
+      placeInSlot(dragItem, slot);
+      dragItem = null;
+    });
+    // Toque / clic: colocar el seleccionado, o devolver el que ya está
+    slot.addEventListener('click', () => {
+      if (slot.querySelector('.ingredient')) {
+        removeFromSlot(slot);
+        clearSelection();
+      } else if (selected) {
+        placeInSlot(selected, slot);
+        clearSelection();
+      }
     });
   });
 }
