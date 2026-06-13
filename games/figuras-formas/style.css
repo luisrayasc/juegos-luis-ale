@@ -1,0 +1,76 @@
+.geo-stage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(160deg, #1a2e1a 0%, #1a1a2e 100%);
+}
+.geo-header { text-align:center; width:100%; max-width:700px; margin-bottom:20px; }
+.back-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.instruction-box {
+  background:var(--card); border-radius:var(--radius);
+  padding:12px 20px; display:flex; align-items:center; gap:10px; font-size:1rem; margin-bottom:16px;
+}
+.level-info {
+  background:var(--card); border-radius:var(--radius);
+  padding:10px 20px; margin-bottom:24px; display:inline-flex; gap:16px; align-items:center;
+}
+
+.shape-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--shadow);
+}
+.shape-svg {
+  width: 180px; height: 180px;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5));
+}
+.shape-question {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-top: 16px;
+}
+
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+.choice-btn {
+  background: var(--card);
+  border: 3px solid transparent;
+  border-radius: var(--radius);
+  padding: 18px 12px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  cursor: pointer;
+  font-family: var(--font);
+  color: var(--text);
+  transition: transform 0.1s, border-color 0.12s;
+  line-height: 1.3;
+}
+.choice-btn:hover { transform: scale(1.04); border-color: var(--green); }
+.choice-btn.correct { background:#a8ff7833; border-color:var(--green); animation:pop 0.3s ease; }
+.choice-btn.wrong   { background:#e9456022; border-color:var(--red);   animation:shake 0.4s ease; }
+
+.fact-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  max-width: 500px;
+  width: 100%;
+  font-size: 0.95rem;
+  color: var(--text2);
+  text-align: center;
+}

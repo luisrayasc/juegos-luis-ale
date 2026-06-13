@@ -1,0 +1,175 @@
+.ops-stage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background: radial-gradient(ellipse at bottom, #1a2e2e 0%, #1a1a2e 100%);
+}
+.ops-header {
+  text-align: center;
+  width: 100%;
+  max-width: 860px;
+  margin-bottom: 20px;
+}
+.back-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.instruction-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+.level-info {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  margin-bottom: 24px;
+  display: inline-flex;
+  gap: 12px;
+}
+
+.circuit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 860px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 36px 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.levers-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lever-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.lever {
+  width: 100px;
+  height: 56px;
+  border-radius: 28px;
+  background: var(--card2);
+  border: 3px solid #ffffff22;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+.lever.on {
+  background: var(--green);
+  border-color: var(--green);
+  justify-content: flex-end;
+}
+.lever.off { justify-content: flex-start; }
+.lever-knob {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.lever-label {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--text2);
+}
+.lever.on + .lever-label, .lever.on ~ .lever-label { color: var(--green); }
+.lever-state {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text2);
+}
+.lever.on ~ .lever-state { color: var(--green); }
+
+.wire { font-size: 2.5rem; color: #ffffff33; }
+
+.gate-box {
+  background: var(--card2);
+  border-radius: var(--radius);
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 120px;
+  border: 3px solid var(--teal);
+}
+.gate-name {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--teal);
+}
+.gate-label {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+.bulb {
+  font-size: 5rem;
+  text-align: center;
+  transition: filter 0.3s;
+  filter: grayscale(1) brightness(0.4);
+}
+.bulb.on {
+  filter: grayscale(0) brightness(1.2);
+  animation: pop 0.3s ease;
+}
+.bulb-label {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text2);
+  text-align: center;
+  margin-top: 4px;
+}
+.bulb.on ~ .bulb-label { color: var(--yellow); }
+
+.challenge-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px 28px;
+  width: 100%;
+  max-width: 860px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.challenge-panel .goal-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--yellow);
+  margin-bottom: 10px;
+}
+.challenge-panel .explain-text {
+  font-size: 1rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+.truth-table {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  width: 100%;
+  max-width: 860px;
+  margin-bottom: 20px;
+}
+.truth-table h3 { text-align:center; margin-bottom:12px; font-size:1rem; }
+.truth-table table { width:100%; border-collapse:collapse; font-size:0.95rem; }
+.truth-table th { color: var(--text2); padding:6px 12px; border-bottom:1px solid #ffffff22; }
+.truth-table td { padding:6px 12px; text-align:center; }
+.truth-table tr.highlight td { background: #ffe66d22; border-radius:4px; }

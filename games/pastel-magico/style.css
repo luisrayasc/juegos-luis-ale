@@ -1,0 +1,81 @@
+.pastel-stage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(160deg, #2e1a0d 0%, #1a1a2e 100%);
+}
+.pastel-header { text-align:center; width:100%; max-width:700px; margin-bottom:20px; }
+.back-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.instruction-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  display: flex; align-items:center; gap:10px; font-size:1rem; margin-bottom:16px;
+}
+.level-info {
+  background: var(--card); border-radius:var(--radius);
+  padding:10px 20px; margin-bottom:24px;
+  display:inline-flex; gap:16px; align-items:center;
+}
+
+.challenge-text {
+  font-size: 1.3rem;
+  font-weight: 800;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  margin-bottom: 28px;
+  width: 100%;
+  max-width: 620px;
+  text-align: center;
+}
+
+.pies-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.pie-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.pie-svg {
+  width: 160px;
+  height: 160px;
+  transition: transform 0.15s, filter 0.15s;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+.pie-wrap:hover .pie-svg { transform: scale(1.08); }
+.pie-wrap.selected .pie-svg { filter: drop-shadow(0 0 16px var(--yellow)); }
+.pie-wrap.correct .pie-svg { filter: drop-shadow(0 0 20px var(--green)); }
+.pie-wrap.wrong .pie-svg   { filter: drop-shadow(0 0 20px var(--red)); animation: shake 0.4s ease; }
+
+.pie-label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--text2);
+  background: var(--card);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+.pie-wrap.selected .pie-label { color: var(--yellow); }
+
+.hint-text {
+  font-size: 1rem;
+  color: var(--text2);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  max-width: 620px;
+  text-align: center;
+}

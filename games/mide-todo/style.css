@@ -1,0 +1,38 @@
+.mide-stage {
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
+  padding:24px; background:linear-gradient(160deg,#0d1a2e 0%,#1a1a2e 100%);
+}
+.mide-header { text-align:center; width:100%; max-width:700px; margin-bottom:20px; }
+.back-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.instruction-box { background:var(--card); border-radius:var(--radius); padding:12px 20px; display:flex; align-items:center; gap:10px; font-size:1rem; margin-bottom:16px; }
+.level-info { background:var(--card); border-radius:var(--radius); padding:10px 20px; margin-bottom:20px; display:inline-flex; gap:16px; align-items:center; }
+
+.measure-card {
+  background:var(--card); border-radius:var(--radius); padding:28px 24px;
+  text-align:center; margin-bottom:20px; width:100%; max-width:560px; box-shadow:var(--shadow); animation:fadeIn .25s ease;
+}
+.measure-question { font-size:1.3rem; font-weight:800; margin-bottom:20px; line-height:1.5; }
+.ruler-wrap { margin:0 auto 16px; position:relative; }
+.ruler-svg { display:block; }
+.conversion-hint {
+  background:var(--card2); border-radius:var(--radius-sm); padding:8px 16px;
+  font-size:.95rem; color:var(--text2); display:inline-block; margin-top:8px;
+}
+
+.choices-grid {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  width:100%; max-width:480px; margin-bottom:20px;
+}
+.choice-btn {
+  background:var(--card); border:3px solid transparent; border-radius:var(--radius);
+  padding:18px 12px; font-size:1.2rem; font-weight:900;
+  cursor:pointer; font-family:var(--font); color:var(--text);
+  transition:transform .1s,border-color .12s; line-height:1.3;
+}
+.choice-btn:hover { transform:scale(1.05); border-color:var(--teal); }
+.choice-btn.correct { background:#a8ff7833; border-color:var(--green); animation:pop .3s ease; }
+.choice-btn.wrong   { background:#e9456022; border-color:var(--red);   animation:shake .4s ease; }
+
+.progress-wrap { width:100%; max-width:480px; background:var(--card); border-radius:20px; height:10px; overflow:hidden; margin-bottom:8px; }
+.progress-bar  { height:100%; background:var(--teal); border-radius:20px; transition:width .3s; }
+.progress-label{ font-size:.9rem; color:var(--text2); margin-bottom:16px; }

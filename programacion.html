@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programación 💻</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hub-header { text-align:center; padding:40px 24px 24px; }
+    .hub-header h1 {
+      background:linear-gradient(135deg,var(--teal),var(--green));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:8px;
+    }
+    .hub-header p { color:var(--text2); font-size:1.1rem; }
+    .back-home { display:block; text-align:center; margin-bottom:8px; }
+
+    .games-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px; max-width:1200px; margin:0 auto; padding:0 24px 60px;
+    }
+    .game-card {
+      background:var(--card); border-radius:var(--radius); padding:32px 24px;
+      text-align:center; box-shadow:var(--shadow);
+      transition:transform .2s,box-shadow .2s;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+      animation:fadeIn .4s ease both;
+    }
+    .game-card:hover { transform:translateY(-8px); box-shadow:0 16px 48px rgba(0,0,0,.6); }
+    .game-card .emoji { font-size:4.5rem; line-height:1; }
+    .game-card h2    { font-size:1.4rem; color:var(--text); }
+    .game-card .concept { font-size:.9rem; color:var(--text2); background:var(--card2); padding:5px 14px; border-radius:20px; }
+    .game-card .stars { font-size:1.6rem; }
+
+    .game-card:nth-child(1){animation-delay:.05s;border-top:4px solid var(--yellow);}
+    .game-card:nth-child(2){animation-delay:.10s;border-top:4px solid var(--teal);}
+    .game-card:nth-child(3){animation-delay:.15s;border-top:4px solid var(--green);}
+    .game-card:nth-child(4){animation-delay:.20s;border-top:4px solid var(--purple);}
+    .game-card:nth-child(5){animation-delay:.25s;border-top:4px solid var(--orange);}
+    .game-card:nth-child(6){animation-delay:.30s;border-top:4px solid var(--red);}
+    .game-card:nth-child(7){animation-delay:.35s;border-top:4px solid var(--green);}
+    .game-card:nth-child(8){animation-delay:.40s;border-top:4px solid var(--orange);}
+    .game-card:nth-child(9){animation-delay:.45s;border-top:4px solid var(--teal);}
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  <div class="hub-header">
+    <a href="index.html" class="btn btn-back back-home" style="display:inline-flex;margin-bottom:16px;">← Menú principal</a>
+    <h1>💻 Juegos de Programación</h1>
+    <p>¡Aprende a pensar como un programador!</p>
+  </div>
+
+  <main class="games-grid">
+    <div class="game-card">
+      <div class="emoji">🎵</div><h2>Light Show DJ</h2>
+      <div class="concept">Eventos</div>
+      <div class="stars" id="stars-light-show">☆☆☆</div>
+      <a href="games/light-show/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🤖</div><h2>Robot Chef</h2>
+      <div class="concept">Secuencias</div>
+      <div class="stars" id="stars-robot-chef">☆☆☆</div>
+      <a href="games/robot-chef/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🐸</div><h2>Frog Jump</h2>
+      <div class="concept">Bucles</div>
+      <div class="stars" id="stars-frog-jump">☆☆☆</div>
+      <a href="games/frog-jump/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🧙</div><h2>Weather Wizard</h2>
+      <div class="concept">Condicionales</div>
+      <div class="stars" id="stars-weather-wizard">☆☆☆</div>
+      <a href="games/weather-wizard/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🫙</div><h2>Magic Variables</h2>
+      <div class="concept">Variables</div>
+      <div class="stars" id="stars-magic-variables">☆☆☆</div>
+      <a href="games/magic-variables/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🔮</div><h2>Spell Factory</h2>
+      <div class="concept">Funciones</div>
+      <div class="stars" id="stars-spell-factory">☆☆☆</div>
+      <a href="games/spell-factory/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🎒</div><h2>Lista Mágica</h2>
+      <div class="concept">Arrays</div>
+      <div class="stars" id="stars-lista-magica">☆☆☆</div>
+      <a href="games/lista-magica/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🐛</div><h2>Bug Buster</h2>
+      <div class="concept">Debugging</div>
+      <div class="stars" id="stars-bug-buster">☆☆☆</div>
+      <a href="games/bug-buster/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">⚡</div><h2>Operadores Locos</h2>
+      <div class="concept">Lógica Booleana</div>
+      <div class="stars" id="stars-operadores-locos">☆☆☆</div>
+      <a href="games/operadores-locos/index.html" class="btn btn-primary">¡JUGAR!</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { getStars } from './shared/progress.js';
+    ['light-show','robot-chef','frog-jump','weather-wizard','magic-variables',
+     'spell-factory','lista-magica','bug-buster','operadores-locos'].forEach(id => {
+      const n=getStars(id), el=document.getElementById('stars-'+id);
+      if(el) el.textContent='★'.repeat(n)+'☆'.repeat(3-n);
+    });
+  </script>
+</body>
+</html>
