@@ -49,6 +49,7 @@
     <a href="index.html" class="btn btn-back back-home" style="display:inline-flex;margin-bottom:16px;">← Menú principal</a>
     <h1>💻 Juegos de Programación</h1>
     <p>¡Aprende a pensar como un programador!</p>
+    <button id="reset-stars" class="btn btn-back" style="display:inline-flex;margin-top:12px;font-size:.95rem;">🗑️ Borrar estrellas</button>
   </div>
 
   <main class="games-grid">
@@ -109,11 +110,21 @@
   </main>
 
   <script type="module">
-    import { getStars } from './shared/progress.js';
-    ['light-show','robot-chef','frog-jump','weather-wizard','magic-variables',
-     'spell-factory','lista-magica','bug-buster','operadores-locos'].forEach(id => {
-      const n=getStars(id), el=document.getElementById('stars-'+id);
-      if(el) el.textContent='★'.repeat(n)+'☆'.repeat(3-n);
+    import { getStars, clearStars } from './shared/progress.js';
+    const IDS = ['light-show','robot-chef','frog-jump','weather-wizard','magic-variables',
+      'spell-factory','lista-magica','bug-buster','operadores-locos'];
+    function renderStars() {
+      IDS.forEach(id => {
+        const n = getStars(id), el = document.getElementById('stars-' + id);
+        if (el) el.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
+      });
+    }
+    renderStars();
+    document.getElementById('reset-stars').addEventListener('click', () => {
+      if (confirm('¿Borrar todas las estrellas de Programación?')) {
+        clearStars(IDS);
+        renderStars();
+      }
     });
   </script>
 </body>

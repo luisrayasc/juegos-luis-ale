@@ -48,6 +48,7 @@
     <a href="index.html" class="btn btn-back" style="display:inline-flex;margin-bottom:16px;">← Menú principal</a>
     <h1>🔢 Juegos de Matemáticas</h1>
     <p>¡Practica y diviértete con los números!</p>
+    <button id="reset-stars" class="btn btn-back" style="display:inline-flex;margin-top:12px;font-size:.95rem;">🗑️ Borrar estrellas</button>
   </div>
 
   <main class="games-grid">
@@ -108,11 +109,21 @@
   </main>
 
   <script type="module">
-    import { getStars } from './shared/progress.js';
-    ['suma-rapida','tablas-locas','division-express','pastel-magico','que-sigue',
-     'figuras-formas','el-reloj','la-tiendita','mide-todo'].forEach(id => {
-      const n=getStars(id), el=document.getElementById('stars-'+id);
-      if(el) el.textContent='★'.repeat(n)+'☆'.repeat(3-n);
+    import { getStars, clearStars } from './shared/progress.js';
+    const IDS = ['suma-rapida','tablas-locas','division-express','pastel-magico','que-sigue',
+      'figuras-formas','el-reloj','la-tiendita','mide-todo'];
+    function renderStars() {
+      IDS.forEach(id => {
+        const n = getStars(id), el = document.getElementById('stars-' + id);
+        if (el) el.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
+      });
+    }
+    renderStars();
+    document.getElementById('reset-stars').addEventListener('click', () => {
+      if (confirm('¿Borrar todas las estrellas de Matemáticas?')) {
+        clearStars(IDS);
+        renderStars();
+      }
     });
   </script>
 </body>

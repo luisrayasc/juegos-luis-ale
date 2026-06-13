@@ -48,7 +48,9 @@ All games import from these two — never reimplement their concerns:
   `showToast(text, ms)`.
 - `shared/progress.js` — persistence: `saveStars(gameId, stars)` and
   `getStars(gameId)`, backed by `localStorage` under the key `stars-<gameId>`.
-  Stars are clamped 0–3.
+  Stars are clamped 0–3. Also `clearStars(gameIds)` (reset a section's games)
+  and `clearAllStars()` (reset every `stars-*` key) — used by the "Borrar
+  estrellas" buttons on the hubs and the main menu.
 
 ### Game conventions (`game.js`)
 

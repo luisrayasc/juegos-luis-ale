@@ -192,5 +192,17 @@
         <div class="menu-btn">¡A proteger!</div>
       </a>
     </div>
+
+    <button id="reset-all" class="btn btn-back" style="margin-bottom:48px;">🗑️ Borrar todas las estrellas</button>
+
+    <script type="module">
+      import { clearAllStars } from './shared/progress.js';
+      document.getElementById('reset-all').addEventListener('click', () => {
+        if (confirm('¿Borrar TODAS las estrellas de todos los juegos? Esto no se puede deshacer.')) {
+          clearAllStars();
+          alert('¡Listo! Se borraron todas las estrellas. 🌟');
+        }
+      });
+    </script>
   </body>
 </html>
