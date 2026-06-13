@@ -65,14 +65,24 @@ function renderQ(cfg){
       <div class="progress-label">Pregunta ${qIdx+1} de ${cfg.questions.length}</div>
       <div class="measure-card">
         <div class="measure-question">${q.q}</div>
-        <div class="conversion-hint">💡 ${q.hint}</div>
+        <div class="conversion-hint" id="hint-box" style="opacity:0; transition:opacity 0.3s;">
+          💡 ${q.hint}
+        </div>
       </div>
       <div class="choices-grid">
         ${choices.map(c=>`<button class="choice-btn" data-val="${c}">${c}</button>`).join('')}
       </div>
+      <button class="btn btn-back" id="hint-btn" style="font-size:.95rem;padding:10px 24px;margin-top:4px;">
+        💡 Ver pista
+      </button>
     </div>`;
 
   document.getElementById('speak-btn').addEventListener('click',()=>speak(q.q));
+  document.getElementById('hint-btn').addEventListener('click',()=>{
+    const hb=document.getElementById('hint-box');
+    if(hb) hb.style.opacity='1';
+    document.getElementById('hint-btn').style.display='none';
+  });
   document.querySelectorAll('.choice-btn').forEach(btn=>
     btn.addEventListener('click',()=>onPick(btn.dataset.val,btn,q.answer,cfg)));
 }
@@ -84,6 +94,11 @@ async function onPick(val,btn,correct,cfg){
     btn.classList.add('wrong');playError();
     document.querySelectorAll('.choice-btn').forEach(b=>{if(b.dataset.val===correct)b.classList.add('correct');});
     speak(`La respuesta es ${correct}`);
+    // mostrar pista automáticamente al fallar
+    const hb=document.getElementById('hint-box');
+    if(hb) hb.style.opacity='1';
+    const hbtn=document.getElementById('hint-btn');
+    if(hbtn) hbtn.style.display='none';
   }
   await delay(1500);qIdx++;
   if(qIdx>=cfg.questions.length)await finish(cfg);else renderQ(cfg);

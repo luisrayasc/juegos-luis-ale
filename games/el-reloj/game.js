@@ -33,14 +33,15 @@ function fmt(h, m) {
   return `${h}:${String(m).padStart(2, '0')}`;
 }
 
-function makeChoices(correct) {
+function makeChoices(correct, cfg) {
   const set = new Set([fmt(correct.h, correct.m)]);
-  while (set.size < 4) {
-    const dh = rnd(-2, 2) || 1;
-    const dm = [-30,-15,15,30][rnd(0,3)];
-    let nh = ((correct.h + dh - 1 + 12) % 12) + 1;
-    let nm = ((correct.m + dm) + 60) % 60;
-    if (nm % 5 !== 0) nm = Math.round(nm / 5) * 5 % 60;
+  const allowedMinutes = cfg.minutes ?? [0,5,10,15,20,25,30,35,40,45,50,55];
+  let tries = 0;
+  while (set.size < 4 && tries < 40) {
+    tries++;
+    const dh = (rnd(1, 5) % 12) || 1;          // siempre diferente hora
+    const nh = ((correct.h + dh - 1) % 12) + 1;
+    const nm = allowedMinutes[rnd(0, allowedMinutes.length - 1)];
     set.add(fmt(nh, nm));
   }
   return shuffle([...set]);
@@ -79,7 +80,7 @@ function nextQ(cfg) {
   answered = false;
   qNum++;
   const time = makeTime(cfg);
-  const choices = makeChoices(time);
+  const choices = makeChoices(time, cfg);
   render(cfg, time, choices);
 }
 

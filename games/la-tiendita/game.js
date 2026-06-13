@@ -33,14 +33,36 @@ function build(){
   score=0;qNum=0;answered=false;nextQ(cfg);
 }
 
+// Billetes de denominaciones realistas en pesos MX
+const BILLS = [10, 20, 50, 100, 200];
+
+function roundUpToBill(total) {
+  // Elige el billete más pequeño que cubra el total
+  for (const b of BILLS) {
+    if (b > total) return b;
+  }
+  return BILLS[BILLS.length - 1];
+}
+
 function makeQ(cfg){
   const p1=PRODUCTS[rnd(0,PRODUCTS.length-1)];
   const p2=cfg.twoProducts?PRODUCTS[rnd(0,PRODUCTS.length-1)]:null;
   const total=p1.price+(p2?p2.price:0);
-  const pay=total+rnd(1,Math.min(cfg.maxPay-total,20));
+  // Pago con el billete más chico que alcance, o el siguiente mayor
+  const minBill = roundUpToBill(total);
+  const billOptions = BILLS.filter(b => b > total && b <= (cfg.maxPay || 200));
+  const pay = billOptions.length > 0
+    ? billOptions[rnd(0, Math.min(billOptions.length - 1, 1))]  // uno de los 2 billetes más chicos
+    : minBill;
   const change=pay-total;
   const wrongs=new Set([change]);
-  while(wrongs.size<4){const c=change+[-5,-10,5,10][wrongs.size-1];if(c>0&&c!==change)wrongs.add(c);}
+  const offsets=shuffle([-10,-5,5,10,15,-15]);
+  for(const d of offsets){
+    if(wrongs.size>=4)break;
+    const c=change+d;
+    if(c>0&&c!==change)wrongs.add(c);
+  }
+  for(let f=1;wrongs.size<4;f++){if(f!==change)wrongs.add(f);}
   wrongs.delete(change);
   return{p1,p2,total,pay,change,choices:shuffle([change,...wrongs])};
 }
@@ -70,7 +92,7 @@ function render(cfg,q){
         <div class="pays-row">
           <span class="pays-label">Total:</span>
           <span class="pays-amount">$${q.total}</span>
-          <span class="pays-label" style="margin-left:16px">Pagas:</span>
+          <span class="pays-label" style="margin-left:16px">Pagas con billete de:</span>
           <span class="pays-amount">$${q.pay}</span>
         </div>
         <div class="question-text">¿Cuánto cambio recibes? 🤔</div>
