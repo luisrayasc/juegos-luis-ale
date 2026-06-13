@@ -111,6 +111,7 @@
 
   <script type="module">
     import { getStars, clearStars } from './shared/progress.js';
+    import { showConfirm, showToast } from './shared/engine.js';
     const IDS = ['light-show','robot-chef','frog-jump','weather-wizard','magic-variables',
       'spell-factory','lista-magica','bug-buster','operadores-locos'];
     function renderStars() {
@@ -120,10 +121,12 @@
       });
     }
     renderStars();
-    document.getElementById('reset-stars').addEventListener('click', () => {
-      if (confirm('¿Borrar todas las estrellas de Programación?')) {
+    document.getElementById('reset-stars').addEventListener('click', async () => {
+      const ok = await showConfirm('¿Borrar las estrellas de Programación?', { emoji: '💻' });
+      if (ok) {
         clearStars(IDS);
         renderStars();
+        showToast('Estrellas borradas 🌟', 1600);
       }
     });
   </script>

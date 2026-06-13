@@ -104,6 +104,41 @@ export function speak(text) {
   }, 80);   // espera 80ms para no interrumpir animaciones
 }
 
+/* Modal de confirmación — bonito, reemplaza al confirm() del navegador.
+   Devuelve una promesa que resuelve true (aceptar) o false (cancelar). */
+export function showConfirm(message, { okText = 'Sí, borrar', cancelText = 'Cancelar', emoji = '🗑️' } = {}) {
+  return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <div class="modal-box" role="dialog" aria-modal="true">
+        <div class="modal-emoji">${emoji}</div>
+        <div class="modal-msg">${message}</div>
+        <div class="modal-actions">
+          <button class="btn btn-back modal-cancel">${cancelText}</button>
+          <button class="btn btn-danger modal-ok">${okText}</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => overlay.classList.add('show'));
+
+    function close(val) {
+      overlay.classList.remove('show');
+      setTimeout(() => overlay.remove(), 200);
+      document.removeEventListener('keydown', onKey);
+      resolve(val);
+    }
+    function onKey(e) {
+      if (e.key === 'Escape') close(false);
+      if (e.key === 'Enter') close(true);
+    }
+    overlay.querySelector('.modal-ok').addEventListener('click', () => close(true));
+    overlay.querySelector('.modal-cancel').addEventListener('click', () => close(false));
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(false); });
+    document.addEventListener('keydown', onKey);
+  });
+}
+
 /* Toast */
 export function showToast(text, durationMs = 1800) {
   let el = document.getElementById('game-toast');

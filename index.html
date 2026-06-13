@@ -197,10 +197,12 @@
 
     <script type="module">
       import { clearAllStars } from './shared/progress.js';
-      document.getElementById('reset-all').addEventListener('click', () => {
-        if (confirm('¿Borrar TODAS las estrellas de todos los juegos? Esto no se puede deshacer.')) {
+      import { showConfirm, showToast } from './shared/engine.js';
+      document.getElementById('reset-all').addEventListener('click', async () => {
+        const ok = await showConfirm('¿Borrar TODAS las estrellas de todos los juegos? Esto no se puede deshacer.', { emoji: '🌟' });
+        if (ok) {
           clearAllStars();
-          alert('¡Listo! Se borraron todas las estrellas. 🌟');
+          showToast('¡Listo! Se borraron todas las estrellas 🌟', 2200);
         }
       });
     </script>

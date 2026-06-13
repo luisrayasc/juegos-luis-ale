@@ -110,6 +110,7 @@
 
   <script type="module">
     import { getStars, clearStars } from './shared/progress.js';
+    import { showConfirm, showToast } from './shared/engine.js';
     const IDS = ['suma-rapida','tablas-locas','division-express','pastel-magico','que-sigue',
       'figuras-formas','el-reloj','la-tiendita','mide-todo'];
     function renderStars() {
@@ -119,10 +120,12 @@
       });
     }
     renderStars();
-    document.getElementById('reset-stars').addEventListener('click', () => {
-      if (confirm('¿Borrar todas las estrellas de Matemáticas?')) {
+    document.getElementById('reset-stars').addEventListener('click', async () => {
+      const ok = await showConfirm('¿Borrar las estrellas de Matemáticas?', { emoji: '🔢' });
+      if (ok) {
         clearStars(IDS);
         renderStars();
+        showToast('Estrellas borradas 🌟', 1600);
       }
     });
   </script>

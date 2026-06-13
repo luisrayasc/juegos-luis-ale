@@ -110,6 +110,7 @@
 
   <script type="module">
     import { getStars, clearStars } from './shared/progress.js';
+    import { showConfirm, showToast } from './shared/engine.js';
     const IDS = ['contrasena-fuerte','escudo-doble','caza-phishing','link-seguro','secreto-publico',
       'atrapa-impostor','guardian-datos','codigo-secreto','mensaje-cifrado'];
     function renderStars() {
@@ -119,10 +120,12 @@
       });
     }
     renderStars();
-    document.getElementById('reset-stars').addEventListener('click', () => {
-      if (confirm('¿Borrar todas las estrellas de Ciberseguridad?')) {
+    document.getElementById('reset-stars').addEventListener('click', async () => {
+      const ok = await showConfirm('¿Borrar las estrellas de Ciberseguridad?', { emoji: '🛡️' });
+      if (ok) {
         clearStars(IDS);
         renderStars();
+        showToast('Estrellas borradas 🌟', 1600);
       }
     });
   </script>
