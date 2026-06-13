@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciberseguridad 🛡️</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hub-header { text-align:center; padding:40px 24px 24px; }
+    .hub-header h1 {
+      background:linear-gradient(135deg,var(--purple),var(--teal));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:8px;
+    }
+    .hub-header p { color:var(--text2); font-size:1.1rem; }
+
+    .games-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px; max-width:1200px; margin:0 auto; padding:0 24px 60px;
+    }
+    .game-card {
+      background:var(--card); border-radius:var(--radius); padding:32px 24px;
+      text-align:center; box-shadow:var(--shadow);
+      transition:transform .2s,box-shadow .2s;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+      animation:fadeIn .4s ease both;
+    }
+    .game-card:hover { transform:translateY(-8px); box-shadow:0 16px 48px rgba(0,0,0,.6); }
+    .game-card .emoji { font-size:4.5rem; line-height:1; }
+    .game-card h2    { font-size:1.4rem; color:var(--text); }
+    .game-card .concept { font-size:.9rem; color:var(--text2); background:var(--card2); padding:5px 14px; border-radius:20px; }
+    .game-card .stars { font-size:1.6rem; }
+
+    .game-card:nth-child(1){animation-delay:.05s;border-top:4px solid var(--purple);}
+    .game-card:nth-child(2){animation-delay:.10s;border-top:4px solid var(--teal);}
+    .game-card:nth-child(3){animation-delay:.15s;border-top:4px solid var(--red);}
+    .game-card:nth-child(4){animation-delay:.20s;border-top:4px solid var(--orange);}
+    .game-card:nth-child(5){animation-delay:.25s;border-top:4px solid var(--green);}
+    .game-card:nth-child(6){animation-delay:.30s;border-top:4px solid var(--yellow);}
+    .game-card:nth-child(7){animation-delay:.35s;border-top:4px solid var(--purple);}
+    .game-card:nth-child(8){animation-delay:.40s;border-top:4px solid var(--teal);}
+    .game-card:nth-child(9){animation-delay:.45s;border-top:4px solid var(--green);}
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  <div class="hub-header">
+    <a href="index.html" class="btn btn-back" style="display:inline-flex;margin-bottom:16px;">← Menú principal</a>
+    <h1>🛡️ Juegos de Ciberseguridad</h1>
+    <p>¡Conviértete en un guardián digital!</p>
+  </div>
+
+  <main class="games-grid">
+    <div class="game-card">
+      <div class="emoji">🔐</div><h2>Contraseña Fuerte</h2>
+      <div class="concept">Contraseñas</div>
+      <div class="stars" id="stars-contrasena-fuerte">☆☆☆</div>
+      <a href="games/contrasena-fuerte/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🛡️</div><h2>Escudo Doble</h2>
+      <div class="concept">Verificación en 2 pasos</div>
+      <div class="stars" id="stars-escudo-doble">☆☆☆</div>
+      <a href="games/escudo-doble/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🎣</div><h2>Caza Phishing</h2>
+      <div class="concept">Detectar engaños</div>
+      <div class="stars" id="stars-caza-phishing">☆☆☆</div>
+      <a href="games/caza-phishing/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🔗</div><h2>¿Link Seguro?</h2>
+      <div class="concept">Enlaces falsos</div>
+      <div class="stars" id="stars-link-seguro">☆☆☆</div>
+      <a href="games/link-seguro/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🤫</div><h2>Secreto o Público</h2>
+      <div class="concept">Datos privados</div>
+      <div class="stars" id="stars-secreto-publico">☆☆☆</div>
+      <a href="games/secreto-publico/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🕵️</div><h2>Atrapa al Impostor</h2>
+      <div class="concept">Ingeniería social</div>
+      <div class="stars" id="stars-atrapa-impostor">☆☆☆</div>
+      <a href="games/atrapa-impostor/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🗝️</div><h2>Guardián de Datos</h2>
+      <div class="concept">Buenos hábitos</div>
+      <div class="stars" id="stars-guardian-datos">☆☆☆</div>
+      <a href="games/guardian-datos/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🔓</div><h2>Código Secreto</h2>
+      <div class="concept">Descifrar (César)</div>
+      <div class="stars" id="stars-codigo-secreto">☆☆☆</div>
+      <a href="games/codigo-secreto/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">✉️</div><h2>Mensaje Cifrado</h2>
+      <div class="concept">Cifrar (César)</div>
+      <div class="stars" id="stars-mensaje-cifrado">☆☆☆</div>
+      <a href="games/mensaje-cifrado/index.html" class="btn btn-purple">¡JUGAR!</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { getStars } from './shared/progress.js';
+    ['contrasena-fuerte','escudo-doble','caza-phishing','link-seguro','secreto-publico',
+     'atrapa-impostor','guardian-datos','codigo-secreto','mensaje-cifrado'].forEach(id => {
+      const n=getStars(id), el=document.getElementById('stars-'+id);
+      if(el) el.textContent='★'.repeat(n)+'☆'.repeat(3-n);
+    });
+  </script>
+</body>
+</html>
