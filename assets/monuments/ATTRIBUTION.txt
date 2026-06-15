@@ -1,0 +1,69 @@
+Imágenes de monumentos (assets/monuments/*.jpg)
+Origen: Wikimedia Commons (vía Wikipedia). Cada archivo bajo su licencia indicada.
+
+eiffel.jpg: Eiffel Tower
+  Archivo: Tour_Eiffel_Wikimedia_Commons_(cropped).jpg
+  Autor: Benh LIEU SONG
+  Licencia: Public domain
+  https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg
+
+libertad.jpg: Statue of Liberty
+  Archivo: Front_view_of_Statue_of_Liberty_(cropped).jpg
+  Autor: AskALotl
+  Licencia: CC0
+  https://commons.wikimedia.org/wiki/File:Front_view_of_Statue_of_Liberty_%28cropped%29.jpg
+
+coliseo.jpg: Colosseum
+  Archivo: Colosseo_2020.jpg
+  Autor: FeaturedPics
+  Licencia: CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg
+
+giza.jpg: Great Pyramid of Giza
+  Archivo: Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg
+  Autor: Douwe C. van der Zee
+  Licencia: CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg
+
+muralla.jpg: Great Wall of China
+  Archivo: The_Great_Wall_of_China_at_Jinshanling-edit.jpg
+  Autor: Severin.stalder
+  Licencia: CC BY-SA 3.0
+  https://commons.wikimedia.org/wiki/File:The_Great_Wall_of_China_at_Jinshanling-edit.jpg
+
+bigben.jpg: Big Ben
+  Archivo: Elizabeth_Tower,_June_2022.jpg
+  Autor: Dave Bezaire
+  Licencia: CC BY-SA 2.0
+  https://commons.wikimedia.org/wiki/File:Elizabeth_Tower%2C_June_2022.jpg
+
+cristo.jpg: Christ the Redeemer (statue)
+  Archivo: Christ_the_Redeemer_-_Cristo_Redentor.jpg
+  Autor: Arne Müseler
+  Licencia: CC BY-SA 3.0 de
+  https://commons.wikimedia.org/wiki/File:Christ_the_Redeemer_-_Cristo_Redentor.jpg
+
+chichen.jpg: Chichen Itza
+  Archivo: Chichen_Itza_3.jpg
+  Autor: Daniel Schwen
+  Licencia: CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Chichen_Itza_3.jpg
+
+pisa.jpg: Leaning Tower of Pisa
+  Archivo: Italy_-_Pisa_-_Leaning_Tower.jpg
+  Autor: Arne Müseler
+  Licencia: CC BY-SA 3.0 de
+  https://commons.wikimedia.org/wiki/File:Italy_-_Pisa_-_Leaning_Tower.jpg
+
+machupicchu.jpg: Machu Picchu
+  Archivo: Machu_Picchu,_2023_(012).jpg
+  Autor: Draceane
+  Licencia: CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Machu_Picchu%2C_2023_%28012%29.jpg
+
+opera.jpg: Sydney Opera House
+  Archivo: Sydney_Australia._(21339175489).jpg
+  Autor: (ver Commons)
+  Licencia: (ver Commons)
+  https://commons.wikimedia.org/wiki/File:Sydney_Australia._%2821339175489%29.jpg
+

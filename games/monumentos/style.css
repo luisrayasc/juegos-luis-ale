@@ -37,3 +37,15 @@
 }
 .reason-box.ok { border-left: 6px solid var(--green); }
 .reason-box.bad { border-left: 6px solid var(--red); }
+
+/* Foto del monumento (imagen local con licencia libre) */
+.monument {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin: 0 auto 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.5);
+}
