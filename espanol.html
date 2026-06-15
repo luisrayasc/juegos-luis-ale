@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Español 📖</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hub-header { text-align:center; padding:40px 24px 24px; }
+    .hub-header h1 {
+      background:linear-gradient(135deg,var(--green),var(--teal));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:8px;
+    }
+    .hub-header p { color:var(--text2); font-size:1.1rem; }
+
+    .games-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px; max-width:1200px; margin:0 auto; padding:0 24px 60px;
+    }
+    .game-card {
+      background:var(--card); border-radius:var(--radius); padding:32px 24px;
+      text-align:center; box-shadow:var(--shadow);
+      transition:transform .2s,box-shadow .2s;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+      animation:fadeIn .4s ease both;
+    }
+    .game-card:hover { transform:translateY(-8px); box-shadow:0 16px 48px rgba(0,0,0,.6); }
+    .game-card .emoji { font-size:4.5rem; line-height:1; }
+    .game-card h2    { font-size:1.4rem; color:var(--text); }
+    .game-card .concept { font-size:.9rem; color:var(--text2); background:var(--card2); padding:5px 14px; border-radius:20px; }
+    .game-card .stars { font-size:1.6rem; }
+
+    .game-card:nth-child(1){animation-delay:.05s;border-top:4px solid var(--green);}
+    .game-card:nth-child(2){animation-delay:.10s;border-top:4px solid var(--teal);}
+    .game-card:nth-child(3){animation-delay:.15s;border-top:4px solid var(--yellow);}
+    .game-card:nth-child(4){animation-delay:.20s;border-top:4px solid var(--orange);}
+    .game-card:nth-child(5){animation-delay:.25s;border-top:4px solid var(--purple);}
+    .game-card:nth-child(6){animation-delay:.30s;border-top:4px solid var(--red);}
+    .game-card:nth-child(7){animation-delay:.35s;border-top:4px solid var(--green);}
+    .game-card:nth-child(8){animation-delay:.40s;border-top:4px solid var(--teal);}
+    .game-card:nth-child(9){animation-delay:.45s;border-top:4px solid var(--yellow);}
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  <div class="hub-header">
+    <a href="index.html" class="btn btn-back" style="display:inline-flex;margin-bottom:16px;">← Menú principal</a>
+    <h1>📖 Juegos de Español</h1>
+    <p>¡Conviértete en un experto de las palabras!</p>
+    <button id="reset-stars" class="btn btn-back" style="display:inline-flex;margin-top:12px;font-size:.95rem;">🗑️ Borrar estrellas</button>
+  </div>
+
+  <main class="games-grid">
+    <div class="game-card">
+      <div class="emoji">🔍</div><h2>Detective de Palabras</h2>
+      <div class="concept">Encuentra el error</div>
+      <div class="stars" id="stars-detective-palabras">☆☆☆</div>
+      <a href="games/detective-palabras/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🎯</div><h2>Cazador de Acentos</h2>
+      <div class="concept">Acentos</div>
+      <div class="stars" id="stars-cazador-acentos">☆☆☆</div>
+      <a href="games/cazador-acentos/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🔠</div><h2>Mayúscula o Minúscula</h2>
+      <div class="concept">Mayúsculas</div>
+      <div class="stars" id="stars-mayusculas">☆☆☆</div>
+      <a href="games/mayusculas/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🟰</div><h2>Sinónimos</h2>
+      <div class="concept">Palabras parecidas</div>
+      <div class="stars" id="stars-sinonimos">☆☆☆</div>
+      <a href="games/sinonimos/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">↔️</div><h2>Antónimos</h2>
+      <div class="concept">Opuestos</div>
+      <div class="stars" id="stars-antonimos">☆☆☆</div>
+      <a href="games/antonimos/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">✍️</div><h2>La Letra Correcta</h2>
+      <div class="concept">B o V, G o J</div>
+      <div class="stars" id="stars-letra-correcta">☆☆☆</div>
+      <a href="games/letra-correcta/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">📝</div><h2>¿Cómo se Escribe?</h2>
+      <div class="concept">Ortografía</div>
+      <div class="stars" id="stars-ortografia">☆☆☆</div>
+      <a href="games/ortografia/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🔢</div><h2>Singular y Plural</h2>
+      <div class="concept">Plurales</div>
+      <div class="stars" id="stars-singular-plural">☆☆☆</div>
+      <a href="games/singular-plural/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🚦</div><h2>¿El o La?</h2>
+      <div class="concept">Género de palabras</div>
+      <div class="stars" id="stars-articulos">☆☆☆</div>
+      <a href="games/articulos/index.html" class="btn btn-success">¡JUGAR!</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { getStars, clearStars } from './shared/progress.js';
+    import { showConfirm, showToast } from './shared/engine.js';
+    const IDS = ['detective-palabras','cazador-acentos','mayusculas','sinonimos','antonimos',
+      'letra-correcta','ortografia','singular-plural','articulos'];
+    function renderStars() {
+      IDS.forEach(id => {
+        const n = getStars(id), el = document.getElementById('stars-' + id);
+        if (el) el.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
+      });
+    }
+    renderStars();
+    document.getElementById('reset-stars').addEventListener('click', async () => {
+      const ok = await showConfirm('¿Borrar las estrellas de Español?', { emoji: '📖' });
+      if (ok) {
+        clearStars(IDS);
+        renderStars();
+        showToast('Estrellas borradas 🌟', 1600);
+      }
+    });
+  </script>
+</body>
+</html>

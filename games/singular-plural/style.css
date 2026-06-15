@@ -1,0 +1,39 @@
+.quiz-stage { max-width: 640px; margin: 0 auto; padding: 16px 20px 60px; }
+.quiz-header { text-align: center; margin-bottom: 18px; }
+.back-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+#star-display { font-size: 1.5rem; letter-spacing: 2px; }
+.quiz-header h2 { margin: 6px 0; }
+.level-info { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; color: var(--text2); margin-top: 6px; }
+.score-badge { background: var(--card2); padding: 4px 14px; border-radius: 20px; font-weight: 800; color: var(--yellow); }
+.instruction-box { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; color: var(--text2); }
+
+.progress-bar-wrap { background: var(--card2); border-radius: 20px; height: 14px; overflow: hidden; margin: 14px 0 4px; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--green), var(--teal)); transition: width .3s; }
+.progress-label { text-align: center; color: var(--text2); font-size: .95rem; margin-bottom: 16px; }
+
+.prompt-card {
+  background: var(--card); border-radius: var(--radius); padding: 26px 22px;
+  text-align: center; box-shadow: var(--shadow); margin-bottom: 18px;
+  font-size: 1.5rem; font-weight: 800; line-height: 1.5; word-break: break-word;
+}
+.prompt-card .big { font-size: 3.6rem; display: block; margin-bottom: 8px; line-height: 1; }
+.prompt-card .sub { font-size: 1rem; color: var(--text2); font-weight: 700; display: block; margin-top: 8px; }
+
+.opt-list { display: flex; flex-direction: column; gap: 12px; }
+.opt-btn {
+  width: 100%; background: var(--card2); color: var(--text); border: 3px solid transparent;
+  border-radius: var(--radius-sm); padding: 16px 18px; cursor: pointer;
+  font-family: var(--font); font-size: 1.25rem; font-weight: 800;
+  transition: transform .1s, border-color .15s; word-break: break-word;
+}
+.opt-btn:hover:not(:disabled) { transform: scale(1.02); border-color: var(--teal); }
+.opt-btn:disabled { cursor: default; }
+.opt-btn.right { border-color: var(--green); background: rgba(168,255,120,.15); }
+.opt-btn.wrong { border-color: var(--red); background: rgba(233,69,96,.15); }
+
+.reason-box {
+  margin-top: 18px; background: var(--card); border-radius: var(--radius-sm);
+  padding: 16px 20px; font-size: 1.05rem; line-height: 1.5; text-align: center; animation: fadeIn .3s ease both;
+}
+.reason-box.ok { border-left: 6px solid var(--green); }
+.reason-box.bad { border-left: 6px solid var(--red); }

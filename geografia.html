@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geografía 🌍</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hub-header { text-align:center; padding:40px 24px 24px; }
+    .hub-header h1 {
+      background:linear-gradient(135deg,var(--red),var(--orange));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:8px;
+    }
+    .hub-header p { color:var(--text2); font-size:1.1rem; }
+
+    .games-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px; max-width:1200px; margin:0 auto; padding:0 24px 60px;
+    }
+    .game-card {
+      background:var(--card); border-radius:var(--radius); padding:32px 24px;
+      text-align:center; box-shadow:var(--shadow);
+      transition:transform .2s,box-shadow .2s;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+      animation:fadeIn .4s ease both;
+    }
+    .game-card:hover { transform:translateY(-8px); box-shadow:0 16px 48px rgba(0,0,0,.6); }
+    .game-card .emoji { font-size:4.5rem; line-height:1; }
+    .game-card h2    { font-size:1.4rem; color:var(--text); }
+    .game-card .concept { font-size:.9rem; color:var(--text2); background:var(--card2); padding:5px 14px; border-radius:20px; }
+    .game-card .stars { font-size:1.6rem; }
+
+    .game-card:nth-child(1){animation-delay:.05s;border-top:4px solid var(--red);}
+    .game-card:nth-child(2){animation-delay:.10s;border-top:4px solid var(--orange);}
+    .game-card:nth-child(3){animation-delay:.15s;border-top:4px solid var(--yellow);}
+    .game-card:nth-child(4){animation-delay:.20s;border-top:4px solid var(--green);}
+    .game-card:nth-child(5){animation-delay:.25s;border-top:4px solid var(--teal);}
+    .game-card:nth-child(6){animation-delay:.30s;border-top:4px solid var(--purple);}
+    .game-card:nth-child(7){animation-delay:.35s;border-top:4px solid var(--red);}
+    .game-card:nth-child(8){animation-delay:.40s;border-top:4px solid var(--orange);}
+    .game-card:nth-child(9){animation-delay:.45s;border-top:4px solid var(--green);}
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  <div class="hub-header">
+    <a href="index.html" class="btn btn-back" style="display:inline-flex;margin-bottom:16px;">← Menú principal</a>
+    <h1>🌍 Juegos de Geografía</h1>
+    <p>¡Viaja por el mundo y conoce sus países!</p>
+    <button id="reset-stars" class="btn btn-back" style="display:inline-flex;margin-top:12px;font-size:.95rem;">🗑️ Borrar estrellas</button>
+  </div>
+
+  <main class="games-grid">
+    <div class="game-card">
+      <div class="emoji">🏳️</div><h2>Adivina la Bandera</h2>
+      <div class="concept">Bandera → país</div>
+      <div class="stars" id="stars-adivina-bandera">☆☆☆</div>
+      <a href="games/adivina-bandera/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🔎</div><h2>Busca la Bandera</h2>
+      <div class="concept">País → bandera</div>
+      <div class="stars" id="stars-busca-bandera">☆☆☆</div>
+      <a href="games/busca-bandera/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🏛️</div><h2>Capitales del Mundo</h2>
+      <div class="concept">País → capital</div>
+      <div class="stars" id="stars-capitales">☆☆☆</div>
+      <a href="games/capitales/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🗺️</div><h2>¿Qué País Es?</h2>
+      <div class="concept">Capital → país</div>
+      <div class="stars" id="stars-que-pais">☆☆☆</div>
+      <a href="games/que-pais/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🌍</div><h2>¿Qué Continente?</h2>
+      <div class="concept">Continentes</div>
+      <div class="stars" id="stars-que-continente">☆☆☆</div>
+      <a href="games/que-continente/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🗣️</div><h2>Idiomas del Mundo</h2>
+      <div class="concept">Idiomas</div>
+      <div class="stars" id="stars-idiomas">☆☆☆</div>
+      <a href="games/idiomas/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🗽</div><h2>Monumentos del Mundo</h2>
+      <div class="concept">Monumentos</div>
+      <div class="stars" id="stars-monumentos">☆☆☆</div>
+      <a href="games/monumentos/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">💰</div><h2>Monedas del Mundo</h2>
+      <div class="concept">Monedas</div>
+      <div class="stars" id="stars-monedas">☆☆☆</div>
+      <a href="games/monedas/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+    <div class="game-card">
+      <div class="emoji">🌐</div><h2>Datos del Mundo</h2>
+      <div class="concept">Trivia geográfica</div>
+      <div class="stars" id="stars-mundo-datos">☆☆☆</div>
+      <a href="games/mundo-datos/index.html" class="btn btn-danger">¡JUGAR!</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { getStars, clearStars } from './shared/progress.js';
+    import { showConfirm, showToast } from './shared/engine.js';
+    const IDS = ['adivina-bandera','busca-bandera','capitales','que-pais','que-continente',
+      'idiomas','monumentos','monedas','mundo-datos'];
+    function renderStars() {
+      IDS.forEach(id => {
+        const n = getStars(id), el = document.getElementById('stars-' + id);
+        if (el) el.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
+      });
+    }
+    renderStars();
+    document.getElementById('reset-stars').addEventListener('click', async () => {
+      const ok = await showConfirm('¿Borrar las estrellas de Geografía?', { emoji: '🌍' });
+      if (ok) {
+        clearStars(IDS);
+        renderStars();
+        showToast('Estrellas borradas 🌟', 1600);
+      }
+    });
+  </script>
+</body>
+</html>

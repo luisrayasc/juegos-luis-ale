@@ -4,11 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A static website of educational mini-games for kids, in Spanish (es-MX). Three
-categories — **Programación** (9 games), **Matemáticas** (9 games) and
+A static website of educational mini-games for kids, in Spanish (es-MX). Five
+categories — **Programación** (9 games), **Matemáticas** (9 games),
 **Ciberseguridad** (9 games, ethical/defensive: passwords, phishing, privacy,
-secret codes). Pure vanilla JS using native ES modules; **no build step, no
-framework, no package manager, no dependencies**. Everything is shipped as-is.
+secret codes), **Español** (9 games: spelling, accents, synonyms, grammar) and
+**Geografía** (9 games: flags, capitals, continents, languages, monuments).
+Pure vanilla JS using native ES modules; **no build step, no framework, no
+package manager, no dependencies**. Everything is shipped as-is.
 
 ## Running locally
 
@@ -26,8 +28,8 @@ There are no tests, linters, or build commands.
 
 Three navigation tiers, each a plain HTML page:
 
-- `index.html` — main menu, links to the three category hubs.
-- `matematicas.html` / `programacion.html` / `ciberseguridad.html` — category hubs. Each hardcodes a
+- `index.html` — main menu, links to the five category hubs.
+- `matematicas.html` / `programacion.html` / `ciberseguridad.html` / `espanol.html` / `geografia.html` — category hubs. Each hardcodes a
   grid of `.game-card`s linking into `games/<id>/index.html`, and a bottom
   inline `<script type="module">` that reads `getStars()` for each game id and
   renders its `★`/`☆` rating.
@@ -86,9 +88,9 @@ game's local `style.css`.
 2. Set `GAME_ID = '<id>'` and build the `LEVELS`/render/check loop following the
    conventions above.
 3. Add a `.game-card` to the relevant hub page (`matematicas.html`,
-   `programacion.html` or `ciberseguridad.html`) linking to it, with a
-   `stars-<id>` element, and append `<id>` to that page's inline
-   stars-rendering array.
+   `programacion.html`, `ciberseguridad.html`, `espanol.html` or
+   `geografia.html`) linking to it, with a `stars-<id>` element, and append
+   `<id>` to that page's inline stars-rendering array.
 4. Update the game count shown on `index.html` if it changed.
 
 ## Language
