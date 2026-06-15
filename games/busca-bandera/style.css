@@ -37,3 +37,19 @@
 }
 .reason-box.ok { border-left: 6px solid var(--green); }
 .reason-box.bad { border-left: 6px solid var(--red); }
+
+/* Las opciones son banderas: mostrarlas grandes y centradas (mejor en celular). */
+.opt-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.opt-btn {
+  flex: 1 1 28%;
+  min-width: 90px;
+  font-size: 3.8rem;
+  line-height: 1.1;
+  text-align: center;
+  padding: 16px 8px;
+}
