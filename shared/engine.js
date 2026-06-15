@@ -104,6 +104,20 @@ export function speak(text) {
   }, 80);   // espera 80ms para no interrumpir animaciones
 }
 
+/* Banderas: convierte emojis de bandera (🇲🇽) en <img> a SVG locales, para que
+   se vean igual en todos los dispositivos (incluido Windows, que no dibuja los
+   emojis de bandera). `base` es la ruta relativa a la raíz (p. ej. '../../'). */
+export function flagImg(str, base = '') {
+  return String(str).replace(
+    /([\u{1F1E6}-\u{1F1FF}])([\u{1F1E6}-\u{1F1FF}])/gu,
+    (_, a, b) => {
+      const code = String.fromCharCode(97 + (a.codePointAt(0) - 0x1F1E6)) +
+                   String.fromCharCode(97 + (b.codePointAt(0) - 0x1F1E6));
+      return `<img class="flag" src="${base}assets/flags/${code}.svg" alt="bandera">`;
+    }
+  );
+}
+
 /* Modal de confirmación — bonito, reemplaza al confirm() del navegador.
    Devuelve una promesa que resuelve true (aceptar) o false (cancelar). */
 export function showConfirm(message, { okText = 'Sí, borrar', cancelText = 'Cancelar', emoji = '🗑️' } = {}) {

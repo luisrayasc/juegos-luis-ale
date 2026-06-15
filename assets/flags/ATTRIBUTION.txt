@@ -1,0 +1,8 @@
+Banderas (assets/flags/*.svg)
+=============================
+
+Fuente: flag-icons — https://github.com/lipis/flag-icons
+Licencia: MIT License (Copyright (c) 2013 Panayiotis Lipiridis)
+
+Los archivos SVG de banderas de este directorio provienen del proyecto
+flag-icons y se redistribuyen bajo la licencia MIT.

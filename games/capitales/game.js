@@ -1,4 +1,4 @@
-import { showConfetti, playSuccess, playError, playTone, speak, showToast } from '../../shared/engine.js';
+import { showConfetti, playSuccess, playError, playTone, speak, showToast, flagImg } from '../../shared/engine.js';
 import { saveStars, getStars } from '../../shared/progress.js';
 
 const GAME_ID = 'capitales';
@@ -80,10 +80,10 @@ function render() {
       <div class="progress-bar-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
       <div class="progress-label">Pregunta ${qIndex + 1} de ${total}</div>
 
-      <div class="prompt-card">${q.prompt}</div>
+      <div class="prompt-card">${flagImg(q.prompt, '../../')}</div>
 
       <div class="opt-list" id="opt-list">
-        ${q.options.map((o, i) => `<button class="opt-btn" data-i="${i}">${o}</button>`).join('')}
+        ${q.options.map((o, i) => `<button class="opt-btn" data-i="${i}">${flagImg(o, '../../')}</button>`).join('')}
       </div>
       <div id="reason-slot"></div>
     </div>

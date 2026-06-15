@@ -37,3 +37,8 @@
 }
 .reason-box.ok { border-left: 6px solid var(--green); }
 .reason-box.bad { border-left: 6px solid var(--red); }
+
+/* Banderas como imagen SVG local (se ven igual en todos los dispositivos) */
+.flag { vertical-align: middle; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.45); }
+.prompt-card .flag { height: 72px; width: auto; display: inline-block; }
+.opt-btn .flag { height: 62px; width: auto; }
